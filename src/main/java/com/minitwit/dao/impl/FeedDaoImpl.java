@@ -32,20 +32,6 @@ public class FeedDaoImpl implements FeedDao {
         return feed.entries;
     }
 
-    /*
-    @Override
-	public List<Message> getUserTimelineMessages(User user) {
-		Map<String, Object> params = new HashMap<String, Object>();
-        params.put("id", user.getId());
-
-		String sql = "select message.*, user.* from message, user where " +
-				"user.user_id = message.author_id and user.user_id = :id " +
-				"order by message.pub_date desc";
-		List<Message> result = template.query(sql, params, messageMapper);
-
-		return result;
-	}
-     */
     @Override
     public List<Feed> getFeedList(User user) {
         Map<String, Object> params = new HashMap<String, Object>();
@@ -56,11 +42,29 @@ public class FeedDaoImpl implements FeedDao {
 
         return result;
     }
-
+    /*
     @Override
-    public void insertNewFeed(String link) {
+	public void insertMessage(Message m) {
+		Map<String, Object> params = new HashMap<String, Object>();
+        params.put("userId", m.getUserId());
+        params.put("text", m.getText());
+        params.put("pubDate", m.getPubDate());
 
+        String sql = "insert into message (author_id, text, pub_date) values (:userId, :text, :pubDate)";
+		template.update(sql, params);
+	}
+     */
+    @Override
+    public void insertNewFeed(User user, String name, String link) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("userId", user.getId());
+        params.put("name", name);
+        params.put("link", link);
+
+        String sql = "insert into feed (user_id, feedName, link) values (:userId, :name, :link)";
+        template.update(sql, params);
     }
+
 
     private RowMapper<Feed> feedMapper = (rs, rowNum) -> {
         Feed m = new Feed(

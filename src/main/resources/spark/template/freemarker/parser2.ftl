@@ -6,6 +6,18 @@
     <div class="col-xs-11">
         <h3>${pageTitle}</h3>
 
+        <div class="panel-body">
+            <form class="form-horizontal" action="/newFeed" method="post">
+                <div class="input-group">
+                    <input type="text" name="name" class="form-control" required/>
+                    <input type="text" name="link" class="form-control" required/>
+                    <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit"> Share </button>
+                                </span>
+                </div>
+            </form>
+        </div>
+
         <div class="row">
             <div class="col-xs-11">
                 <div id="media-list" class="row">

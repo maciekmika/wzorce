@@ -86,7 +86,21 @@ public class WebConfig {
 				halt();
 			}
 		});
+///*
+		post("/newFeed", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			MultiMap<String> params = new MultiMap<String>();
+			UrlEncoded.decodeTo(req.body(), params, "UTF-8");
 
+			String name = params.getString("name");
+			String link = params.getString("link");
+
+
+			service.addNewFeed(user, name, link);
+			res.redirect("/");
+			return null;
+		});
+//*/
 		/*
 		 * Displays the latest messages of all users.
 		 */

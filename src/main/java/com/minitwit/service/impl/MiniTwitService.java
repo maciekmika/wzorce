@@ -45,6 +45,10 @@ public class MiniTwitService {
 	public List<Feed> getFeedList(User user){
 		return feedDao.getFeedList(user);
 	}
+
+	public void addNewFeed(User user, String name, String link) {
+		feedDao.insertNewFeed(user, name, link);
+	}
 	
 	public User getUserbyUsername(String username) {
 		return userDao.getUserbyUsername(username);

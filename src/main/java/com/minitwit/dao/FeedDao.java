@@ -12,5 +12,5 @@ public interface FeedDao {
 
 	List<Feed> getFeedList(User user);
 	
-	void insertNewFeed(String link);
+	void insertNewFeed(User user, String name,String link);
 }
