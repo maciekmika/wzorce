@@ -14,4 +14,4 @@
 
 6. Żeby wyświetlić liste subskrypcji, zalogować się do user001, `http://localhost:4567/parser2`
 
-
+7. Żeby dodać nową subskrypcje, zalogować się i w `http://localhost:4567/parser2` wpisać w 1. pole name, w 2. linka 
