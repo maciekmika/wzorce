@@ -20,6 +20,8 @@ Thanks to [SamAsEnd](https://github.com/SamAsEnd) for given this project a [bett
 
 4. Log in as user001 with password user001, or user002/user002, or user003/user003 until user010/user010, or sign up yourself. If your e-mail address has an associated Gravatar image, this will be used as your profile image.
 
+5. Żeby wejść do parsera, `http://localhost:4567/parser`
+
 ## License
 MIT License
 
