@@ -11,3 +11,7 @@
 4. Log in as user001 with password user001, or user002/user002, or user003/user003 until user010/user010, or sign up yourself. If your e-mail address has an associated Gravatar image, this will be used as your profile image.
 
 5. Żeby wejść do parsera, `http://localhost:4567/parser`
+
+6. Żeby wyświetlić liste subskrypcji, zalogować się do user001, `http://localhost:4567/parser2`
+
+
