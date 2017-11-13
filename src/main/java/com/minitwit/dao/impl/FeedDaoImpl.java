@@ -26,8 +26,20 @@ public class FeedDaoImpl implements FeedDao {
     pobieranie z bazy
      */
     @Override
-    public List<FeedMessage> getFeedMesseges(User user) {
-        RSSFeedParser rss = new RSSFeedParser("https://www.osw.waw.pl/pl/rss.xml");
+    public List<FeedMessage> getFeedMesseges(User user, String name) {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id", user.getId());
+        params.put("feedName", name);
+        String sql = "select * from feed where feed.user_id = :id and feed.feedName = :feedName";
+        List<Feed> list = template.query(sql, params, feedMapper);
+
+        String link = null;
+        if(list != null && !list.isEmpty()) {
+            link = list.get(0).getLink();
+        }
+
+        RSSFeedParser rss = new RSSFeedParser(link);//"https://www.osw.waw.pl/pl/rss.xml"
         Feed feed = rss.readFeed();
         return feed.entries;
     }
@@ -42,18 +54,7 @@ public class FeedDaoImpl implements FeedDao {
 
         return result;
     }
-    /*
-    @Override
-	public void insertMessage(Message m) {
-		Map<String, Object> params = new HashMap<String, Object>();
-        params.put("userId", m.getUserId());
-        params.put("text", m.getText());
-        params.put("pubDate", m.getPubDate());
 
-        String sql = "insert into message (author_id, text, pub_date) values (:userId, :text, :pubDate)";
-		template.update(sql, params);
-	}
-     */
     @Override
     public void insertNewFeed(User user, String name, String link) {
         Map<String, Object> params = new HashMap<String, Object>();

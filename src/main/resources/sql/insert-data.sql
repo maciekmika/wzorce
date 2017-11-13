@@ -258,4 +258,5 @@ INSERT INTO message(author_id, text, pub_date) VALUES (10, 'This is a message wr
 
 
 INSERT INTO feed(user_id, feedName, link) VALUES (1, 'osw', 'https://www.osw.waw.pl/pl/rss.xml');
-INSERT INTO feed(user_id, feedName, link) VALUES (1, 'pism', 'https://www.pism.pl/rss/index.php?lang_id=1&id_group=8');
+INSERT INTO feed(user_id, feedName, link) VALUES (1, 'cnn', ' http://rss.cnn.com/rss/edition.rss ');
+INSERT INTO feed(user_id, feedName, link) VALUES (1, 'reuters', ' http://feeds.reuters.com/Reuters/worldNews ');

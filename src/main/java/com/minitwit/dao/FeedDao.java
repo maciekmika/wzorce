@@ -8,7 +8,7 @@ import com.minitwit.model.User;
 import java.util.List;
 
 public interface FeedDao {
-	List<FeedMessage> getFeedMesseges(User user);
+	List<FeedMessage> getFeedMesseges(User user, String name);
 
 	List<Feed> getFeedList(User user);
 	

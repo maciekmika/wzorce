@@ -38,8 +38,8 @@ public class MiniTwitService {
 		return messageDao.getPublicTimelineMessages();
 	}
 
-	public List<FeedMessage> getFeedMessages(User user){
-		return feedDao.getFeedMesseges(user);
+	public List<FeedMessage> getFeedMessages(User user, String name){
+		return feedDao.getFeedMesseges(user, name);
 	}
 
 	public List<Feed> getFeedList(User user){

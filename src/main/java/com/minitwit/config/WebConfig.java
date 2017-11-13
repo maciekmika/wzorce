@@ -50,6 +50,8 @@ public class WebConfig {
 			map.put("user", user);
 			List<Message> messages = service.getUserFullTimelineMessages(user);
 			map.put("messages", messages);
+			List<Feed> feedList = service.getFeedList(user);
+			map.put("feedList", feedList);
 			return new ModelAndView(map, "timeline.ftl");
         }, new FreeMarkerEngine());
 		before("/", (req, res) -> {
@@ -60,11 +62,12 @@ public class WebConfig {
 			}
 		});
 
-		get( "/parser", (req, res) -> {
+		get( "/f/:feedName", (req, res) -> {
+			String feedName = req.params(":feedName");
 			User user = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", "Parser");
-			List<FeedMessage> feedMessages = service.getFeedMessages(user);
+			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
 			map.put("feedMessages", feedMessages);
 			return new ModelAndView(map, "parser.ftl");
 		}, new FreeMarkerEngine());
