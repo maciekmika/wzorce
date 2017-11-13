@@ -12,14 +12,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.minitwit.App;
-import com.minitwit.model.FeedMessage;
+import com.minitwit.model.*;
 import org.apache.commons.beanutils.BeanUtils;
 import org.eclipse.jetty.util.MultiMap;
 import org.eclipse.jetty.util.UrlEncoded;
 
-import com.minitwit.model.LoginResult;
-import com.minitwit.model.Message;
-import com.minitwit.model.User;
 import com.minitwit.service.impl.MiniTwitService;
 
 import spark.ModelAndView;
@@ -72,7 +69,24 @@ public class WebConfig {
 			return new ModelAndView(map, "parser.ftl");
 		}, new FreeMarkerEngine());
 
-		
+
+
+		get( "/parser2", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			Map<String, Object> map = new HashMap<>();
+			map.put("pageTitle", "Parser2");
+			List<Feed> feedList = service.getFeedList(user);
+			map.put("feedList", feedList);
+			return new ModelAndView(map, "parser2.ftl");
+		}, new FreeMarkerEngine());
+		before("/parser2", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/public");
+				halt();
+			}
+		});
+
 		/*
 		 * Displays the latest messages of all users.
 		 */
