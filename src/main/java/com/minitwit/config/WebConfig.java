@@ -52,6 +52,8 @@ public class WebConfig {
 			map.put("messages", messages);
 			List<Feed> feedList = service.getFeedList(user);
 			map.put("feedList", feedList);
+			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+			map.put("feedMessages", feedMessages);
 			return new ModelAndView(map, "timeline.ftl");
         }, new FreeMarkerEngine());
 		before("/", (req, res) -> {
@@ -62,34 +64,45 @@ public class WebConfig {
 			}
 		});
 
-		get( "/f/:feedName", (req, res) -> {
-			String feedName = req.params(":feedName");
+		get("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Parser");
-			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
-			map.put("feedMessages", feedMessages);
-			return new ModelAndView(map, "parser.ftl");
+			map.put("pageTitle", "Timeline");
+			map.put("user", user);
+			return new ModelAndView(map, "addNewFeed.ftl");
 		}, new FreeMarkerEngine());
-
-
-
-		get( "/parser2", (req, res) -> {
-			User user = getAuthenticatedUser(req);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Parser2");
-			List<Feed> feedList = service.getFeedList(user);
-			map.put("feedList", feedList);
-			return new ModelAndView(map, "parser2.ftl");
-		}, new FreeMarkerEngine());
-		before("/parser2", (req, res) -> {
+		before("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			if(user == null) {
 				res.redirect("/public");
 				halt();
 			}
 		});
-///*
+
+		get( "/f/:feedName", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			String feedName = req.params(":feedName");
+			Map<String, Object> map = new HashMap<>();
+			map.put("pageTitle", "Parser");
+			map.put("user", user);
+			List<Feed> feedList = service.getFeedList(user);
+			map.put("feedList", feedList);
+			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
+			map.put("feedMessages", feedMessages);
+			return new ModelAndView(map, "parser.ftl");
+		}, new FreeMarkerEngine());
+		before("/f/:feedName", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/public");
+				halt();
+			}
+		});
+
+
+		/*
+		* Add new feed
+		* */
 		post("/newFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			MultiMap<String> params = new MultiMap<String>();
@@ -103,7 +116,7 @@ public class WebConfig {
 			res.redirect("/");
 			return null;
 		});
-//*/
+
 		/*
 		 * Displays the latest messages of all users.
 		 */

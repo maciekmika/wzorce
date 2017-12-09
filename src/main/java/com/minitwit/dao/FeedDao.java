@@ -10,6 +10,8 @@ import java.util.List;
 public interface FeedDao {
 	List<FeedMessage> getFeedMesseges(User user, String name);
 
+	List<FeedMessage> getFeedMessegesForMainPage(User user);
+
 	List<Feed> getFeedList(User user);
 	
 	void insertNewFeed(User user, String name,String link);

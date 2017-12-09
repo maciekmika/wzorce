@@ -9,14 +9,13 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class FeedDaoImpl implements FeedDao {
 
     private NamedParameterJdbcTemplate template;
+    public List<FeedMessage> entries = new ArrayList<FeedMessage>();
 
     @Autowired
     public FeedDaoImpl(DataSource ds) {
@@ -39,9 +38,30 @@ public class FeedDaoImpl implements FeedDao {
             link = list.get(0).getLink();
         }
 
-        RSSFeedParser rss = new RSSFeedParser(link);//"https://www.osw.waw.pl/pl/rss.xml"
+        RSSFeedParser rss = new RSSFeedParser(link);
         Feed feed = rss.readFeed();
         return feed.entries;
+    }
+
+    @Override
+    public List<FeedMessage> getFeedMessegesForMainPage(User user) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id", user.getId());
+        String sql = "select * from feed where feed.user_id = :id";
+        List<Feed> list = template.query(sql, params, feedMapper);
+
+        String link = null;
+        if(list != null && !list.isEmpty()) {
+            for(int i=0; i<list.size();i++) {
+                link = list.get(i).getLink();
+                RSSFeedParser rss = new RSSFeedParser(link);
+                Feed feed = rss.readFeed();
+                entries.addAll(feed.entries);
+            }
+        }
+        Collections.shuffle(entries);
+
+        return entries;
     }
 
     @Override

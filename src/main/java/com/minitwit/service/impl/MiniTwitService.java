@@ -42,6 +42,10 @@ public class MiniTwitService {
 		return feedDao.getFeedMesseges(user, name);
 	}
 
+	public List<FeedMessage> getFeedMessagesForMainPage(User user){
+		return feedDao.getFeedMessegesForMainPage(user);
+	}
+
 	public List<Feed> getFeedList(User user){
 		return feedDao.getFeedList(user);
 	}
