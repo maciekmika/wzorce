@@ -12,53 +12,60 @@
 </head>
 <body>
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">MiniTwit</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <#if user??>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/addNewFeed">Add new Feed</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Sign Out ${user.username}</a>
-                    </li>
-                </ul>
-            <#else>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Sign In</a>
-                    </li>
-                </ul>
-            </#if>
+<div class="container-fluid" id="menu-top">
+    <div class="row justify-content-md-center">
+        <div class="col">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="/">RssReader</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <#if user??>
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/addNewFeed">Add new Feed</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/logout">Sign Out ${user.username}</a>
+                                </li>
+                            </ul>
+                        <#else>
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Home</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register">Sign Up</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login">Sign In</a>
+                                </li>
+                            </ul>
+                        </#if>
+                    </div>
+                </nav>
+            </div>
         </div>
-    </nav>
+
+    </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2">
+        <div class="col-sm-2">
             <div class="list-group">
             <#if user??>
-                <a href="#" class="list-group-item list-group-item-action active">Cras justo odio</a>
+                <a href="#" class="list-group-item list-group-item-action active">Feeds</a>
                 <#if feedList??>
                     <#list feedList as feed>
 
@@ -69,12 +76,15 @@
             </#if>
             </div>
         </div>
-        <div class="col-10">
+        <div class="col-sm-8">
             <div class="container">
 
                 <#nested />
 
             </div>
+        </div>
+        <div class="col-sm-2">
+
         </div>
 
     </div>

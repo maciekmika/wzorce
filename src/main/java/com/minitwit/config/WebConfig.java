@@ -35,7 +35,9 @@ public class WebConfig {
 		staticFileLocation("/public");
 		setupRoutes();
 	}
-	
+
+
+
 	private void setupRoutes() {
 		/*
 		 * Shows a users timeline or if no user is logged in,
@@ -48,8 +50,6 @@ public class WebConfig {
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", "Timeline");
 			map.put("user", user);
-			List<Message> messages = service.getUserFullTimelineMessages(user);
-			map.put("messages", messages);
 			List<Feed> feedList = service.getFeedList(user);
 			map.put("feedList", feedList);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
@@ -63,6 +63,17 @@ public class WebConfig {
 				halt();
 			}
 		});
+
+		/*
+		 * Displays the latest messages of all users.
+		 */
+		get("/public", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			Map<String, Object> map = new HashMap<>();
+			map.put("pageTitle", "Rss Reader");
+			map.put("user", user);
+			return new ModelAndView(map, "timeline.ftl");
+		}, new FreeMarkerEngine());
 
 		get("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -118,104 +129,12 @@ public class WebConfig {
 		});
 
 		/*
-		 * Displays the latest messages of all users.
-		 */
-		get("/public", (req, res) -> {
-			User user = getAuthenticatedUser(req);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Public Timeline");
-			map.put("user", user);
-			List<Message> messages = service.getPublicTimelineMessages();
-			map.put("messages", messages);
-			return new ModelAndView(map, "timeline.ftl");
-        }, new FreeMarkerEngine());
-		
-		
-		/*
-		 * Displays a user's tweets.
-		 */
-		get("/t/:username", (req, res) -> {
-			String username = req.params(":username");
-			User profileUser = service.getUserbyUsername(username);
-			
-			User authUser = getAuthenticatedUser(req);
-			boolean followed = false;
-			if(authUser != null) {
-				followed = service.isUserFollower(authUser, profileUser);
-			}
-			List<Message> messages = service.getUserTimelineMessages(profileUser);
-			
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", username + "'s Timeline");
-			map.put("user", authUser);
-			map.put("profileUser", profileUser);
-			map.put("followed", followed);
-			map.put("messages", messages);
-			return new ModelAndView(map, "timeline.ftl");
-        }, new FreeMarkerEngine());
-		/*
 		 * Checks if the user exists
 		 */
 		before("/t/:username", (req, res) -> {
 			String username = req.params(":username");
 			User profileUser = service.getUserbyUsername(username);
 			if(profileUser == null) {
-				halt(404, "User not Found");
-			}
-		});
-		
-		
-		/*
-		 * Adds the current user as follower of the given user.
-		 */
-		get("/t/:username/follow", (req, res) -> {
-			String username = req.params(":username");
-			User profileUser = service.getUserbyUsername(username);
-			User authUser = getAuthenticatedUser(req);
-			
-			service.followUser(authUser, profileUser);
-			res.redirect("/t/" + username);
-			return null;
-        });
-		/*
-		 * Checks if the user is authenticated and the user to follow exists
-		 */
-		before("/t/:username/follow", (req, res) -> {
-			String username = req.params(":username");
-			User authUser = getAuthenticatedUser(req);
-			User profileUser = service.getUserbyUsername(username);
-			if(authUser == null) {
-				res.redirect("/login");
-				halt();
-			} else if(profileUser == null) {
-				halt(404, "User not Found");
-			}
-		});
-		
-		
-		/*
-		 * Removes the current user as follower of the given user.
-		 */
-		get("/t/:username/unfollow", (req, res) -> {
-			String username = req.params(":username");
-			User profileUser = service.getUserbyUsername(username);
-			User authUser = getAuthenticatedUser(req);
-			
-			service.unfollowUser(authUser, profileUser);
-			res.redirect("/t/" + username);
-			return null;
-        });
-		/*
-		 * Checks if the user is authenticated and the user to unfollow exists
-		 */
-		before("/t/:username/unfollow", (req, res) -> {
-			String username = req.params(":username");
-			User authUser = getAuthenticatedUser(req);
-			User profileUser = service.getUserbyUsername(username);
-			if(authUser == null) {
-				res.redirect("/login");
-				halt();
-			} else if(profileUser == null) {
 				halt(404, "User not Found");
 			}
 		});
@@ -317,35 +236,7 @@ public class WebConfig {
 				halt();
 			}
 		});
-		
-		
-		/*
-		 * Registers a new message for the user.
-		 */
-		post("/message", (req, res) -> {
-			User user = getAuthenticatedUser(req);
-			MultiMap<String> params = new MultiMap<String>();
-			UrlEncoded.decodeTo(req.body(), params, "UTF-8");
-			Message m = new Message();
-			m.setUserId(user.getId());
-			m.setPubDate(new Date());
-			BeanUtils.populate(m, params);
-			service.addMessage(m);
-			res.redirect("/");
-			return null;
-        });
-		/*
-		 * Checks if the user is authenticated
-		 */
-		before("/message", (req, res) -> {
-			User authUser = getAuthenticatedUser(req);
-			if(authUser == null) {
-				res.redirect("/login");
-				halt();
-			}
-		});
-		
-		
+
 		/*
 		 * Logs the user out and redirects to the public timeline
 		 */
