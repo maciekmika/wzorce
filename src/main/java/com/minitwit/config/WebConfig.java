@@ -78,8 +78,10 @@ public class WebConfig {
 		get("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Timeline");
+			map.put("pageTitle", "Add new channel");
 			map.put("user", user);
+			List<Feed> feedList = service.getFeedList(user);
+			map.put("feedList", feedList);
 			return new ModelAndView(map, "addNewFeed.ftl");
 		}, new FreeMarkerEngine());
 		before("/addNewFeed", (req, res) -> {

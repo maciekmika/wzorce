@@ -87,7 +87,7 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>${commons.beanutils.version}</version>
 		</dependency>
-		
+
 		<!-- To enable logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
