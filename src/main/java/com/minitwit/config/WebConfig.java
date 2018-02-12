@@ -49,18 +49,55 @@ public class WebConfig {
 		get("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Timeline");
+			map.put("pageTitle", "Main Page");
 			map.put("user", user);
 			List<Feed> feedList = service.getFeedList(user);
 			map.put("feedList", feedList);
+			map.put("pageNumber", 1);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+			int pagesAmount = (feedMessages.size()+1)/5;
+			if((feedMessages.size()) % 5 != 0 ) pagesAmount++;
+			List<Integer> pages = new ArrayList<>();
+			for(int i=1;i<=pagesAmount;i++) pages.add(i);
+			feedMessages = cropList(1, feedMessages);
 			map.put("feedMessages", feedMessages);
+			map.put("pages", pages);
+			map.put("pagesAmount", pagesAmount);
 			return new ModelAndView(map, stateBase.getMainPage().getName());
         }, new FreeMarkerEngine());
 		before("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			if(user == null) {
 				res.redirect("/start");
+				halt();
+			}
+		});
+
+		get( "/main/:pageNumber", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			String pageNumber = req.params(":pageNumber");
+			Integer pageNr = Integer.parseInt(pageNumber);
+			Map<String, Object> map = new HashMap<>();
+			map.put("pageTitle", "Channel");
+			map.put("user", user);
+			List<Feed> feedList = service.getFeedList(user);
+			map.put("feedList", feedList);
+			map.put("pageNumber", pageNr);
+			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+			int pagesAmount = (feedMessages.size()+1)/5;
+			if((feedMessages.size()) % 5 != 0 ) pagesAmount++;
+			List<Integer> pages = new ArrayList<>();
+			for(int i=1;i<=pagesAmount;i++) pages.add(i);
+			feedMessages = cropList(pageNr, feedMessages);
+			map.put("feedMessages", feedMessages);
+			map.put("pages", pages);
+			map.put("pagesAmount", pagesAmount);
+			return new ModelAndView(map, stateBase.getMainPage().getName());
+		}, new FreeMarkerEngine());
+		before("/main/:pageNumber", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/public");
 				halt();
 			}
 		});
@@ -89,28 +126,31 @@ public class WebConfig {
 		get( "/public/:disabilityName", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			String disabilityName = req.params(":disabilityName");
-			if(disabilityName.equals("colorBlind")) stateBase = new ColorBlindState();
-			else if(disabilityName.equals("lowVision")) stateBase = new LowVisionState();
-			else if(disabilityName.equals("keyboardUser")) stateBase = new KeyboardUserState();
+
+			if(disabilityName.equals("colorBlind"))
+				stateBase = new ColorBlindState();
+			else if(disabilityName.equals("lowVision"))
+				stateBase = new LowVisionState();
+			else if(disabilityName.equals("keyboardUser"))
+				stateBase = new KeyboardUserState();
+			else
+				stateBase = new MainState();
+
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", "main");
 			map.put("user", user);
-			return new ModelAndView(map, stateBase.getMainPage().getName());
+			return new ModelAndView(map, stateBase.getLoginPage().getName());
 		}, new FreeMarkerEngine());
-		before("/f/:feedName", (req, res) -> {
-			User user = getAuthenticatedUser(req);
-			if(user == null) {
-				res.redirect("/public");
-				halt();
-			}
-		});
+
 
 
 		get("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Timeline");
+			map.put("pageTitle", "Add new channel");
 			map.put("user", user);
+			List<Feed> feedList = service.getFeedList(user);
+			map.put("feedList", feedList);
 			return new ModelAndView(map, stateBase.getAddChannelPage().getName());
 		}, new FreeMarkerEngine());
 		before("/addNewFeed", (req, res) -> {

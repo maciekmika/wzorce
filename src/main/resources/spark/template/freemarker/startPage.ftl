@@ -1,4 +1,4 @@
-<#import "masterTemplate.ftl" as layout />
+<#import "default/masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="Timeline">
 

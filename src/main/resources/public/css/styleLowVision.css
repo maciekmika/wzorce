@@ -9,7 +9,7 @@ body {
     padding-right: 15px;
     padding-left: 15px;
 
-    color: #777;
+    color: black;
     border-top: 10px solid black;
 }
 
@@ -18,14 +18,8 @@ body {
     border-bottom: 10px solid black;
 }
 
-.navbar-light .navbar-nav .nav-link{
+#menu-top a{
     color: black;
-
-}
-
-.navbar-light .navbar-nav .nav-link:hover{
-    color: black;
-    text-decoration: underline;
 }
 
 .media-body{
@@ -40,9 +34,4 @@ body {
 #addFeedForm{
     padding: 0% 10%;
     padding-bottom: 5%;
-}
-
-#menu-left:hover{
-    background-color: white;
-    text-decoration: underline;
 }

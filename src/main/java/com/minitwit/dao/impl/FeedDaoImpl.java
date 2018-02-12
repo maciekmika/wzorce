@@ -15,7 +15,7 @@ import java.util.*;
 public class FeedDaoImpl implements FeedDao {
 
     private NamedParameterJdbcTemplate template;
-    public List<FeedMessage> entries = new ArrayList<FeedMessage>();
+
 
     @Autowired
     public FeedDaoImpl(DataSource ds) {
@@ -46,6 +46,8 @@ public class FeedDaoImpl implements FeedDao {
     @Override
     public List<FeedMessage> getFeedMessegesForMainPage(User user) {
         Map<String, Object> params = new HashMap<String, Object>();
+        List<FeedMessage> entries = new ArrayList<FeedMessage>();
+
         params.put("id", user.getId());
         String sql = "select * from feed where feed.user_id = :id";
         List<Feed> list = template.query(sql, params, feedMapper);

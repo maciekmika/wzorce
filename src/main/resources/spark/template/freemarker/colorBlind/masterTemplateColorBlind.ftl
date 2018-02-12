@@ -64,11 +64,11 @@
         <div class="col-sm-2">
             <div class="list-group">
             <#if user??>
-                <a href="#" class="list-group-item list-group-item-action active">Channels</a>
+                <a href="#" class="list-group-item list-group-item-action" id="menu-left-active">Channels</a>
                 <#if feedList??>
                     <#list feedList as feed>
 
-                            <a href="/f/${feed.title}" class="list-group-item list-group-item-action" id="menu-left">${feed.title}</a>
+                            <a href="/f/${feed.title}/page/1" class="list-group-item list-group-item-action" id="menu-left">${feed.title}</a>
 
                     </#list>
                 </#if>

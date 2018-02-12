@@ -46,7 +46,35 @@ body {
     padding-bottom: 5%;
 }
 
+#menu-left{
+    border: 1px solid black;
+}
+
+#menu-left-active{
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
 #menu-left:hover{
     background-color: white;
     text-decoration: underline;
+}
+
+.page-item:hover{
+    background-color: white;
+    text-decoration: underline;
+}
+
+.page-item a:hover{
+    background-color: white;
+    text-decoration: underline;
+}
+
+.pagination{
+    padding: 0% 10%;
+}
+
+.form-control{
+    border-color: black;
 }

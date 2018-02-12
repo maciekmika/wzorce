@@ -68,7 +68,7 @@
                 <#if feedList??>
                     <#list feedList as feed>
 
-                            <a href="/f/${feed.title}" class="list-group-item list-group-item-action" id="menu-left">${feed.title}</a>
+                            <a href="/f/${feed.title}/page/1" class="list-group-item list-group-item-action" id="menu-left">${feed.title}</a>
 
                     </#list>
                 </#if>
