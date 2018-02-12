@@ -1,4 +1,6 @@
-package com.minitwit.factory;
+package com.minitwit.factory.page;
+
+import com.minitwit.factory.page.Page;
 
 public class MainPage implements Page {
 

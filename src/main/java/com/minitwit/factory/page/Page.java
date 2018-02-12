@@ -1,4 +1,4 @@
-package com.minitwit.factory;
+package com.minitwit.factory.page;
 
 public interface Page {
 

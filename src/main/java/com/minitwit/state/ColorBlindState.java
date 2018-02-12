@@ -1,12 +1,13 @@
 package com.minitwit.state;
 
-import com.minitwit.factory.DefaultFactory;
-import com.minitwit.factory.page.Page;
+import com.minitwit.factory.ColorBlindFactory;
 import com.minitwit.factory.PageFactory;
+import com.minitwit.factory.page.Page;
 
-public class MainState implements StateBase {
+public class ColorBlindState implements StateBase {
 
-    PageFactory pageFactory = new DefaultFactory();
+
+    PageFactory pageFactory = new ColorBlindFactory();
 
     @Override
     public Page getMainPage() {
@@ -15,21 +16,21 @@ public class MainState implements StateBase {
 
     @Override
     public Page getLoginPage() {
-        return null;
+        return pageFactory.createLoginPage();
     }
 
     @Override
     public Page getRegisterPage() {
-        return null;
+        return pageFactory.createRegisterPage();
     }
 
     @Override
     public Page getChannelPage() {
-        return null;
+        return pageFactory.createChannelPage();
     }
 
     @Override
     public Page getAddChannelPage() {
-        return null;
+        return pageFactory.createAddChannelPage();
     }
 }

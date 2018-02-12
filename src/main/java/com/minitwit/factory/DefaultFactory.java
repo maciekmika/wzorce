@@ -1,6 +1,9 @@
 package com.minitwit.factory;
 
-public class MainPageFactory implements PageFactory {
+import com.minitwit.factory.page.MainPage;
+import com.minitwit.factory.page.Page;
+
+public class DefaultFactory implements PageFactory {
     @Override
     public Page createMainPage() {
         return new MainPage();

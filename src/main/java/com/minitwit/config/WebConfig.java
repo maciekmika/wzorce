@@ -6,24 +6,18 @@ import static spark.Spark.halt;
 import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.minitwit.App;
-import com.minitwit.factory.MainPageFactory;
-import com.minitwit.factory.PageFactory;
 import com.minitwit.model.*;
-import com.minitwit.state.MainState;
-import com.minitwit.state.StateBase;
+import com.minitwit.state.*;
 import org.apache.commons.beanutils.BeanUtils;
 import org.eclipse.jetty.util.MultiMap;
 import org.eclipse.jetty.util.UrlEncoded;
 
 import com.minitwit.service.impl.MiniTwitService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import spark.ModelAndView;
 import spark.Request;
 import spark.template.freemarker.FreeMarkerEngine;
@@ -65,7 +59,7 @@ public class WebConfig {
 		before("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			if(user == null) {
-				res.redirect("/public");
+				res.redirect("/start");
 				halt();
 			}
 		});
@@ -78,15 +72,45 @@ public class WebConfig {
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", "Rss Reader");
 			map.put("user", user);
-			return new ModelAndView(map, "timeline.ftl");
+			return new ModelAndView(map, stateBase.getMainPage().getName());
 		}, new FreeMarkerEngine());
+
+
+		get("/start", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			Map<String, Object> map = new HashMap<>();
+			map.put("pageTitle", "Rss Reader");
+			map.put("user", user);
+			return new ModelAndView(map, "startPage.ftl");
+		}, new FreeMarkerEngine());
+
+
+		get( "/public/:disabilityName", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			String disabilityName = req.params(":disabilityName");
+			if(disabilityName.equals("colorBlind")) stateBase = new ColorBlindState();
+			else if(disabilityName.equals("lowVision")) stateBase = new LowVisionState();
+			else if(disabilityName.equals("keyboardUser")) stateBase = new KeyboardUserState();
+			Map<String, Object> map = new HashMap<>();
+			map.put("pageTitle", "main");
+			map.put("user", user);
+			return new ModelAndView(map, stateBase.getMainPage().getName());
+		}, new FreeMarkerEngine());
+		before("/f/:feedName", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/public");
+				halt();
+			}
+		});
+
 
 		get("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			Map<String, Object> map = new HashMap<>();
 			map.put("pageTitle", "Timeline");
 			map.put("user", user);
-			return new ModelAndView(map, "addNewFeed.ftl");
+			return new ModelAndView(map, stateBase.getAddChannelPage().getName());
 		}, new FreeMarkerEngine());
 		before("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -106,7 +130,7 @@ public class WebConfig {
 			map.put("feedList", feedList);
 			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
 			map.put("feedMessages", feedMessages);
-			return new ModelAndView(map, "parser.ftl");
+			return new ModelAndView(map, stateBase.getChannelPage().getName());
 		}, new FreeMarkerEngine());
 		before("/f/:feedName", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -155,7 +179,7 @@ public class WebConfig {
 			if(req.queryParams("r") != null) {
 				map.put("message", "You were successfully registered and can login now");
 			}
-			return new ModelAndView(map, "login.ftl");
+			return new ModelAndView(map, stateBase.getLoginPage().getName());
         }, new FreeMarkerEngine());
 		/*
 		 * Logs the user in.
@@ -200,7 +224,7 @@ public class WebConfig {
 		 */
 		get("/register", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
-			return new ModelAndView(map, "register.ftl");
+			return new ModelAndView(map, stateBase.getRegisterPage().getName());
         }, new FreeMarkerEngine());
 		/*
 		 * Registers the user.

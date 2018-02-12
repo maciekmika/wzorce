@@ -1,5 +1,7 @@
 package com.minitwit.factory;
 
+import com.minitwit.factory.page.Page;
+
 public interface PageFactory {
 
     public Page createMainPage();

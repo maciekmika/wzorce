@@ -1,6 +1,6 @@
 package com.minitwit.state;
 
-import com.minitwit.factory.Page;
+import com.minitwit.factory.page.Page;
 
 public interface StateBase {
 
