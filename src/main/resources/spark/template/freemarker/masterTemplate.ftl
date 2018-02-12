@@ -16,8 +16,7 @@
     <div class="row justify-content-md-center">
         <div class="col">
             <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="/">RssReader</a>
+                <nav class="navbar navbar-expand-lg navbar-light">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -29,12 +28,12 @@
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/addNewFeed">Add new Feed</a>
+                                    <a class="nav-link" href="/addNewFeed">Add channel</a>
                                 </li>
                             </ul>
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/logout">Sign Out ${user.username}</a>
+                                    <a class="nav-link" href="/logout">Sign Out</a>
                                 </li>
                             </ul>
                         <#else>
@@ -62,29 +61,26 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div class="list-group">
             <#if user??>
-                <a href="#" class="list-group-item list-group-item-action active">Feeds</a>
+                <a href="#" class="list-group-item list-group-item-action active">Channels</a>
                 <#if feedList??>
                     <#list feedList as feed>
 
-                            <a href="/f/${feed.title}" class="list-group-item list-group-item-action">${feed.title}</a>
+                            <a href="/f/${feed.title}" class="list-group-item list-group-item-action" id="menu-left">${feed.title}</a>
 
                     </#list>
                 </#if>
             </#if>
             </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <div class="container">
 
                 <#nested />
 
             </div>
-        </div>
-        <div class="col-sm-2">
-
         </div>
 
     </div>

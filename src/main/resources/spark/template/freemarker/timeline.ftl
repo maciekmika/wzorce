@@ -7,18 +7,14 @@
         <div id="media-list" class="row">
             <#if feedMessages??>
                 <#list feedMessages as message>
-                    <hr/>
-
                     <div class="media">
                         <div class="media-body">
                             <h4 class="media-heading">
-                            ${message.title}
+                                <a href="${message.link}">
+                                ${message.title}
                                 </a>
                             </h4>
-
-                        ${message.description} <br/>
-
-                            <small>&mdash; ${message.author}</small>
+                        ${message.description}
                         </div>
                     </div>
                 <#else>
@@ -28,7 +24,7 @@
                     </div>
                 </#list>
             <#else>
-                <hr/>
+
                 <div class="well">
                     There're no messages so far.
                 </div>

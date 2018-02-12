@@ -1,6 +1,7 @@
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    font-size: 300%;
 }
 
 .footer {
@@ -9,9 +10,39 @@ body {
     padding-left: 15px;
 
     color: #777;
-    border-top: 1px solid #e5e5e5;
+    border-top: 10px solid black;
 }
 
 #menu-top {
     padding-bottom: 20px;
+    border-bottom: 10px solid black;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: black;
+
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+.media-body{
+    padding: 0% 5%;
+    padding-bottom: 5%;
+}
+
+.media-body a{
+    font-size: 300%;
+}
+
+#addFeedForm{
+    padding: 0% 10%;
+    padding-bottom: 5%;
+}
+
+#menu-left:hover{
+    background-color: white;
+    text-decoration: underline;
 }
