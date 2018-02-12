@@ -12,13 +12,18 @@ import java.util.List;
 import java.util.Map;
 
 import com.minitwit.App;
+import com.minitwit.factory.MainPageFactory;
+import com.minitwit.factory.PageFactory;
 import com.minitwit.model.*;
+import com.minitwit.state.MainState;
+import com.minitwit.state.StateBase;
 import org.apache.commons.beanutils.BeanUtils;
 import org.eclipse.jetty.util.MultiMap;
 import org.eclipse.jetty.util.UrlEncoded;
 
 import com.minitwit.service.impl.MiniTwitService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import spark.ModelAndView;
 import spark.Request;
 import spark.template.freemarker.FreeMarkerEngine;
@@ -28,10 +33,11 @@ public class WebConfig {
 	
 	private static final String USER_SESSION_ID = "user";
 	private MiniTwitService service;
-	 
+	private StateBase stateBase;
 
 	public WebConfig(MiniTwitService service) {
 		this.service = service;
+		this.stateBase = new MainState();
 		staticFileLocation("/public");
 		setupRoutes();
 	}
@@ -54,7 +60,7 @@ public class WebConfig {
 			map.put("feedList", feedList);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
 			map.put("feedMessages", feedMessages);
-			return new ModelAndView(map, "timeline.ftl");
+			return new ModelAndView(map, stateBase.getMainPage().getName());
         }, new FreeMarkerEngine());
 		before("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
