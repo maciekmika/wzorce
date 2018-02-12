@@ -6,6 +6,7 @@ import static spark.Spark.halt;
 import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -113,6 +114,37 @@ public class WebConfig {
 			return new ModelAndView(map, stateBase.getAddChannelPage().getName());
 		}, new FreeMarkerEngine());
 		before("/addNewFeed", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/public");
+				halt();
+			}
+		});
+
+		get( "/f/:feedName/page/:pageNumber", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			String feedName = req.params(":feedName");
+			String pageNumber = req.params(":pageNumber");
+			Integer pageNr = Integer.parseInt(pageNumber);
+			Map<String, Object> map = new HashMap<>();
+			map.put("pageTitle", "Channel");
+			map.put("user", user);
+			List<Feed> feedList = service.getFeedList(user);
+			map.put("feedList", feedList);
+			map.put("pageNumber", pageNr);
+			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
+			int pagesAmount = (feedMessages.size()+1)/5;
+			if((feedMessages.size()) % 5 != 0 ) pagesAmount++;
+			List<Integer> pages = new ArrayList<>();
+			for(int i=1;i<=pagesAmount;i++) pages.add(i);
+			feedMessages = cropList(pageNr, feedMessages);
+			map.put("feedMessages", feedMessages);
+			map.put("pages", pages);
+			map.put("feedName", feedName);
+			map.put("pagesAmount", pagesAmount);
+			return new ModelAndView(map, stateBase.getChannelPage().getName());
+		}, new FreeMarkerEngine());
+		before("/f/:feedName", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			if(user == null) {
 				res.redirect("/public");
@@ -275,6 +307,26 @@ public class WebConfig {
 			res.redirect("/public");
 			return null;
         });
+	}
+
+	private List<FeedMessage> cropList(int pageNr, List<FeedMessage> feedMessages){
+		int bottom;
+
+
+		bottom = ((pageNr-1)*5);
+		int top = ((pageNr)*5);
+
+		if(bottom <feedMessages.size() && top<feedMessages.size()){
+			feedMessages = feedMessages.subList(bottom,top);
+			return feedMessages;
+		}
+		else if(bottom <feedMessages.size() && top >= feedMessages.size()){
+			feedMessages = feedMessages.subList(bottom, feedMessages.size());
+			return feedMessages;
+		}
+		else{
+			return feedMessages;
+		}
 	}
 
 	private void addAuthenticatedUser(Request request, User u) {
