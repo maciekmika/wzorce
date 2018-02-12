@@ -34,4 +34,47 @@
     </div>
 </div>
 
+<nav aria-label="Page navigation">
+    <#if pages??>
+    <ul class="pagination">
+
+
+
+        <#list pages as page>
+            <#if page == (pageNumber-1) && pageNumber != 1>
+                <li class="page-item">
+                    <a class="page-link" href="/f/${feedName}/page/${page}" >Previous</a>
+                </li>
+            <#elseif pageNumber == 1  && page == pageNumber>
+                <li class="page-item disabled">
+                    <a class="page-link" href="/f/${feedName}/page/${page}" >Previous</a>
+                </li>
+            </#if>
+        </#list>
+
+        <#list pages as page>
+            <#if page == pageNumber>
+                <li class="page-item active">
+                    <a class="page-link" href="/f/${feedName}/page/${page}">${page}<span class="sr-only">(current)</span></a>
+                </li>
+            <#else>
+                <li class="page-item"><a class="page-link" href="/f/${feedName}/page/${page}">${page}</a></li>
+            </#if>
+        </#list>
+
+        <#list pages as page>
+            <#if page == (pageNumber+1) && pageNumber != pagesAmount>
+                <li class="page-item">
+                    <a class="page-link" href="/f/${feedName}/page/${page}">Next</a>
+                </li>
+            <#elseif pageNumber == pagesAmount && page == pageNumber>
+                <li class="page-item disabled">
+                    <a class="page-link" href="/f/${feedName}/page/${page}">Next</a>
+                </li>
+            </#if>
+        </#list>
+    </ul>
+    </#if>
+</nav>
+
 </@layout.masterTemplate>

@@ -17,25 +17,6 @@ body {
 
 }
 
-.alert-danger{
-    color: white;
-    background-color: #ff1a1a;
-}
-
-.navbar-light .navbar-nav .nav-link{
-    color: black;
-}
-
-.navbar-light .navbar-nav .nav-link:hover{
-    color: black;
-    text-decoration: underline;
-}
-
-.footer{
-    color: black;
-    border-top-color: black;
-}
-
 .media-body{
     padding: 0% 10%;
     padding-bottom: 5%;
@@ -44,9 +25,4 @@ body {
 #addFeedForm{
     padding: 0% 10%;
     padding-bottom: 5%;
-}
-
-#menu-left:hover{
-    background-color: white;
-    text-decoration: underline;
 }

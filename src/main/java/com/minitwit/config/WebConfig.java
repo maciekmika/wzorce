@@ -6,10 +6,7 @@ import static spark.Spark.halt;
 import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.minitwit.App;
 import com.minitwit.model.*;
@@ -92,16 +89,27 @@ public class WebConfig {
 			}
 		});
 
-		get( "/f/:feedName", (req, res) -> {
+		get( "/f/:feedName/page/:pageNumber", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			String feedName = req.params(":feedName");
+			String pageNumber = req.params(":pageNumber");
+			Integer pageNr = Integer.parseInt(pageNumber);
 			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Parser");
+			map.put("pageTitle", "Channel");
 			map.put("user", user);
 			List<Feed> feedList = service.getFeedList(user);
 			map.put("feedList", feedList);
+			map.put("pageNumber", pageNr);
 			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
+			int pagesAmount = (feedMessages.size()+1)/5;
+			if((feedMessages.size()) % 5 != 0 ) pagesAmount++;
+			List<Integer> pages = new ArrayList<>();
+			for(int i=1;i<=pagesAmount;i++) pages.add(i);
+			feedMessages = cropList(pageNr, feedMessages);
 			map.put("feedMessages", feedMessages);
+			map.put("pages", pages);
+			map.put("feedName", feedName);
+			map.put("pagesAmount", pagesAmount);
 			return new ModelAndView(map, "parser.ftl");
 		}, new FreeMarkerEngine());
 		before("/f/:feedName", (req, res) -> {
@@ -257,6 +265,26 @@ public class WebConfig {
 	private void removeAuthenticatedUser(Request request) {
 		request.session().removeAttribute(USER_SESSION_ID);
 		
+	}
+
+	private List<FeedMessage> cropList(int pageNr, List<FeedMessage> feedMessages){
+		int bottom;
+
+
+		bottom = ((pageNr-1)*5);
+		int top = ((pageNr)*5);
+
+		if(bottom <feedMessages.size() && top<feedMessages.size()){
+			feedMessages = feedMessages.subList(bottom,top);
+			return feedMessages;
+		}
+		else if(bottom <feedMessages.size() && top >= feedMessages.size()){
+			feedMessages = feedMessages.subList(bottom, feedMessages.size());
+			return feedMessages;
+		}
+		else{
+			return feedMessages;
+		}
 	}
 
 	private User getAuthenticatedUser(Request request) {
