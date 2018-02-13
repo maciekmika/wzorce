@@ -9,12 +9,27 @@
     <title>${title} | MiniTwit</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/styleLowVision.css">
+    <script src="js/voicerss-tts.min.js"></script>
+
     <style>
         body {font-size: ${textSize}%;}
         .media-body a{  font-size: ${textSize}%;  }
     </style>
 </head>
 <body>
+<script>
+    function textToSpeech(input) {
+        VoiceRSS.speech({
+            key: 'c0492ccc8fc74ee18304b7d772281380',
+            src: input,
+            hl: 'en-us',
+            r: 0,
+            c: 'mp3',
+            f: '44khz_16bit_stereo',
+            ssml: false
+        });
+    }
+</script>
 
 <div class="container-fluid" id="menu-top">
     <div class="row justify-content-md-center">

@@ -13,8 +13,11 @@
                         <a href="${message.link}">
                         ${message.title}
                         </a>
+                        <input type="button" style="border: none; padding: 0; background: none; font-size: 35px;" type="button" onclick="textToSpeech(`${message.title}`)" value="🔊" />
                     </h4>
                 ${message.description}
+                    <input type="button" style="border: none; padding: 0; background: none; font-size: 35px;" onclick="textToSpeech(`${message.description}`)" value="🔊" />
+
                 </div>
             </li>
         <#else>

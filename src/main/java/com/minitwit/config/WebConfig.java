@@ -57,6 +57,8 @@ public class WebConfig {
 			User user = getAuthenticatedUser(req);
 			List<Feed> feedList = service.getFeedList(user);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+			feedMessages.forEach(t -> t.setDescription(t.getDescription().replaceAll("\"","'")));
+
 
 			int pagesAmount = countPagesAmount(feedMessages.size());
 			List<Integer> pages = createPagesList(pagesAmount);
@@ -84,6 +86,8 @@ public class WebConfig {
 			User user = getAuthenticatedUser(req);
 			List<Feed> feedList = service.getFeedList(user);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+			feedMessages.forEach(t -> t.setDescription(t.getDescription().replaceAll("\"","'")));
+
 
 			int pagesAmount = countPagesAmount(feedMessages.size());
 			List<Integer> pages = createPagesList(pagesAmount);
@@ -112,6 +116,7 @@ public class WebConfig {
 			Integer pageNr = Integer.parseInt(pageNumber);
 			List<Feed> feedList = service.getFeedList(user);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+			feedMessages.forEach(t -> t.setDescription(t.getDescription().replaceAll("\"","'")));
 
 
 			int pagesAmount = countPagesAmount(feedMessages.size());
@@ -140,6 +145,7 @@ public class WebConfig {
 			Integer pageNr = Integer.parseInt(pageNumber);
 			List<Feed> feedList = service.getFeedList(user);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+			feedMessages.forEach(t -> t.setDescription(t.getDescription().replaceAll("\"","'")));
 
 
 			int pagesAmount = countPagesAmount(feedMessages.size());
@@ -276,6 +282,7 @@ public class WebConfig {
 			Integer pageNr = Integer.parseInt(pageNumber);
 			List<Feed> feedList = service.getFeedList(user);
 			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
+			feedMessages.forEach(t -> t.setDescription(t.getDescription().replaceAll("\"","'")));
 
 			int pagesAmount = countPagesAmount(feedMessages.size());
 			List<Integer> pages = createPagesList(pagesAmount);
@@ -303,6 +310,8 @@ public class WebConfig {
 			Integer pageNr = Integer.parseInt(pageNumber);
 			List<Feed> feedList = service.getFeedList(user);
 			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
+			feedMessages.forEach(t -> t.setDescription(t.getDescription().replaceAll("\"","'")));
+
 			setTextSize(req.params(":textSize"));
 
 			int pagesAmount = countPagesAmount(feedMessages.size());
