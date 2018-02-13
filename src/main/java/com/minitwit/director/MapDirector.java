@@ -18,5 +18,7 @@ public class MapDirector {
         builderBase.addPageNr( );
         builderBase.addPagesList( );
         builderBase.addPagesAmount( );
+        builderBase.addLinkToCurrentPage();
+        builderBase.addTextSize();
     }
 }

@@ -33,6 +33,7 @@ public class WebConfig {
 	private StateBase stateBase;
 	private MapDirector mapDirector;
 	private BuilderBase builderBase;
+	private Integer textSize = 300;
 
 	public WebConfig(MiniTwitService service) {
 		this.service = service;
@@ -64,7 +65,7 @@ public class WebConfig {
 
 			builderBase = new MainPageBuilder(new HashMap<>(),
 					"Main Page", user, feedList, feedMessages, 1,
-					pages, pagesAmount);
+					pages, pagesAmount, "/", textSize);
 			mapDirector.createMap(builderBase);
 
 			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
@@ -76,6 +77,34 @@ public class WebConfig {
 				halt();
 			}
 		});
+
+
+		get("/size/:textSize", (req, res) -> {
+
+			User user = getAuthenticatedUser(req);
+			List<Feed> feedList = service.getFeedList(user);
+			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+
+			int pagesAmount = countPagesAmount(feedMessages.size());
+			List<Integer> pages = createPagesList(pagesAmount);
+			feedMessages = cropList(1, feedMessages);
+			setTextSize(req.params(":textSize"));
+
+			builderBase = new MainPageBuilder(new HashMap<>(),
+					"Main Page", user, feedList, feedMessages, 1,
+					pages, pagesAmount, "/", textSize);
+			mapDirector.createMap(builderBase);
+
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
+		}, new FreeMarkerEngine());
+		before("/", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/start");
+				halt();
+			}
+		});
+
 
 		get( "/main/:pageNumber", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -92,7 +121,7 @@ public class WebConfig {
 
 			builderBase = new MainPageBuilder(new HashMap<>(),
 					"Main Page", user, feedList, feedMessages, pageNr,
-					pages, pagesAmount);
+					pages, pagesAmount, "/main/"+pageNumber, textSize);
 			mapDirector.createMap(builderBase);
 
 			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
@@ -105,10 +134,47 @@ public class WebConfig {
 			}
 		});
 
+		get( "/main/:pageNumber/size/:textSize", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			String pageNumber = req.params(":pageNumber");
+			Integer pageNr = Integer.parseInt(pageNumber);
+			List<Feed> feedList = service.getFeedList(user);
+			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
+
+
+			int pagesAmount = countPagesAmount(feedMessages.size());
+			List<Integer> pages = createPagesList(pagesAmount);
+			feedMessages = cropList(pageNr, feedMessages);
+			setTextSize(req.params(":textSize"));
+
+			builderBase = new MainPageBuilder(new HashMap<>(),
+					"Main Page", user, feedList, feedMessages, pageNr,
+					pages, pagesAmount, "/main/"+pageNumber, textSize);
+			mapDirector.createMap(builderBase);
+
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
+		}, new FreeMarkerEngine());
+		before("/main/:pageNumber/size/:textSize", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/public");
+				halt();
+			}
+		});
+
 
 		get("/public", (req, res) -> {
 			User user = getAuthenticatedUser(req);
-			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user);
+			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user, "/public/", textSize);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
+		}, new FreeMarkerEngine());
+
+
+		get("/public/size/:textSize", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			setTextSize(req.params(":textSize"));
+			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user, "/public/", textSize);
 			mapDirector.createMap(builderBase);
 			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
 		}, new FreeMarkerEngine());
@@ -116,7 +182,7 @@ public class WebConfig {
 
 		get("/start", (req, res) -> {
 			User user = getAuthenticatedUser(req);
-			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user);
+			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user, "/start/", textSize);
 			mapDirector.createMap(builderBase);
 			return new ModelAndView(builderBase.getFinalMap(), "startPage.ftl");
 		}, new FreeMarkerEngine());
@@ -135,7 +201,30 @@ public class WebConfig {
 			else
 				stateBase = new MainState();
 
-			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user);
+			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user,
+					"/public/"+disabilityName+"/", textSize);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getLoginPage().getName());
+		}, new FreeMarkerEngine());
+
+
+
+		get( "/public/:disabilityName/size/:textSize", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			String disabilityName = req.params(":disabilityName");
+			setTextSize(req.params(":textSize"));
+
+			if(disabilityName.equals("colorBlind"))
+				stateBase = new ColorBlindState();
+			else if(disabilityName.equals("lowVision"))
+				stateBase = new LowVisionState();
+			else if(disabilityName.equals("keyboardUser"))
+				stateBase = new KeyboardUserState();
+			else
+				stateBase = new MainState();
+
+			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user,
+					"/public/"+disabilityName+"/", textSize);
 			mapDirector.createMap(builderBase);
 			return new ModelAndView(builderBase.getFinalMap(), stateBase.getLoginPage().getName());
 		}, new FreeMarkerEngine());
@@ -146,7 +235,8 @@ public class WebConfig {
 			User user = getAuthenticatedUser(req);
 			List<Feed> feedList = service.getFeedList(user);
 
-			builderBase = new AddChannelPageBuilder(new HashMap<>(), "Add new channel", user, feedList);
+			builderBase = new AddChannelPageBuilder(new HashMap<>(), "Add new channel",
+					user, feedList, "/addNewFeed/", textSize);
 			mapDirector.createMap(builderBase);
 			return new ModelAndView(builderBase.getFinalMap(), stateBase.getAddChannelPage().getName());
 		}, new FreeMarkerEngine());
@@ -157,6 +247,27 @@ public class WebConfig {
 				halt();
 			}
 		});
+
+
+		get("/addNewFeed/size/:textSize", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			List<Feed> feedList = service.getFeedList(user);
+			setTextSize(req.params(":textSize"));
+
+			builderBase = new AddChannelPageBuilder(new HashMap<>(), "Add new channel",
+					user, feedList, "/addNewFeed/", textSize);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getAddChannelPage().getName());
+		}, new FreeMarkerEngine());
+		before("/addNewFeed", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/public");
+				halt();
+			}
+		});
+
+
 
 		get( "/f/:feedName/page/:pageNumber", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -172,7 +283,7 @@ public class WebConfig {
 
 			builderBase = new ChannelPageBuilder(new HashMap<>(),
 					"Channel", user, feedList, feedMessages, feedName, pageNr,
-					pages, pagesAmount);
+					pages, pagesAmount, "/f/"+feedName+"/page/"+pageNr+"/", textSize);
 			mapDirector.createMap(builderBase);
 			return new ModelAndView(builderBase.getFinalMap(), stateBase.getChannelPage().getName());
 		}, new FreeMarkerEngine());
@@ -183,7 +294,34 @@ public class WebConfig {
 				halt();
 			}
 		});
-		
+
+
+		get( "/f/:feedName/page/:pageNumber/size/:textSize", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			String feedName = req.params(":feedName");
+			String pageNumber = req.params(":pageNumber");
+			Integer pageNr = Integer.parseInt(pageNumber);
+			List<Feed> feedList = service.getFeedList(user);
+			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
+			setTextSize(req.params(":textSize"));
+
+			int pagesAmount = countPagesAmount(feedMessages.size());
+			List<Integer> pages = createPagesList(pagesAmount);
+			feedMessages = cropList(pageNr, feedMessages);
+
+			builderBase = new ChannelPageBuilder(new HashMap<>(),
+					"Channel", user, feedList, feedMessages, feedName, pageNr,
+					pages, pagesAmount, "/f/"+feedName+"/page/"+pageNr+"/", textSize);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getChannelPage().getName());
+		}, new FreeMarkerEngine());
+		before("/f/:feedName", (req, res) -> {
+			User user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/public");
+				halt();
+			}
+		});
 /*
 		get( "/f/:feedName", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -244,6 +382,8 @@ public class WebConfig {
 			if(req.queryParams("r") != null) {
 				map.put("message", "You were successfully registered and can login now");
 			}
+			map.put("currentPage", "/login/");
+			map.put("textSize", textSize);
 			return new ModelAndView(map, stateBase.getLoginPage().getName());
         }, new FreeMarkerEngine());
 		/*
@@ -340,6 +480,11 @@ public class WebConfig {
 			res.redirect("/public");
 			return null;
         });
+	}
+
+	private void setTextSize(String text){
+		if(text.equals("larger")) textSize+=50;
+		else if(text.equals("smaller")) textSize-=50;
 	}
 
 	private List<Integer> createPagesList(int pagesAmount){

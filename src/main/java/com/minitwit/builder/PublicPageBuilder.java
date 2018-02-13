@@ -9,11 +9,16 @@ public class PublicPageBuilder implements  BuilderBase {
     private Map<String, Object> map;
     private String pageTitle;
     private User user;
+    private String currentPage;
+    private Integer textSize;
 
-    public PublicPageBuilder(Map<String, Object> map, String title, User user){
+    public PublicPageBuilder(Map<String, Object> map, String title, User user,
+                             String linkToCurrentPage, Integer textSize){
         this.map=map;
         this.pageTitle=title;
         this.user=user;
+        this.currentPage=linkToCurrentPage;
+        this.textSize=textSize;
     }
 
     @Override
@@ -54,6 +59,16 @@ public class PublicPageBuilder implements  BuilderBase {
     @Override
     public void addPagesAmount() {
 
+    }
+
+    @Override
+    public void addLinkToCurrentPage() {
+        map.put("currentPage", currentPage);
+    }
+
+    @Override
+    public void addTextSize() {
+        map.put("textSize", textSize);
     }
 
     @Override

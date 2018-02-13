@@ -9,6 +9,10 @@
     <title>${title} | MiniTwit</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/styleLowVision.css">
+    <style>
+        body {font-size: ${textSize}%;}
+        .media-body a{  font-size: ${textSize}%;  }
+    </style>
 </head>
 <body>
 
@@ -28,10 +32,10 @@
                                     <a class="nav-link" href="#">Text size</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/addNewFeed">+</a>
+                                    <a class="nav-link" href="${currentPage}size/larger">+</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/addNewFeed">-</a>
+                                    <a class="nav-link" href="${currentPage}size/smaller">-</a>
                                 </li>
                             </ul>
                             <ul class="navbar-nav ml-auto">

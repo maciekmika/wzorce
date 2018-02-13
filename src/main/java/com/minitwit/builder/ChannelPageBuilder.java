@@ -18,10 +18,13 @@ public class ChannelPageBuilder implements BuilderBase {
     private Integer pageNr;
     private List<Integer> pages;
     private Integer pagesAmount;
+    private String currentPage;
+    private Integer textSize;
 
     public ChannelPageBuilder(Map<String, Object> map, String title, User user,
                               List< Feed > feedList, List< FeedMessage > feedMessages,
-                              String feedName, Integer pageNr, List<Integer> pages, Integer pagesAmount){
+                              String feedName, Integer pageNr, List<Integer> pages,
+                              Integer pagesAmount, String linkToCurrentPage, Integer textSize){
         this.map=map;
         this.title=title;
         this.user=user;
@@ -31,7 +34,8 @@ public class ChannelPageBuilder implements BuilderBase {
         this.pageNr=pageNr;
         this.pages=pages;
         this.pagesAmount=pagesAmount;
-
+        this.currentPage=linkToCurrentPage;
+        this.textSize=textSize;
     }
 
     @Override
@@ -72,6 +76,16 @@ public class ChannelPageBuilder implements BuilderBase {
     @Override
     public void addPagesAmount() {
         map.put("pagesAmount", pagesAmount);
+    }
+
+    @Override
+    public void addLinkToCurrentPage() {
+        map.put("currentPage", currentPage);
+    }
+
+    @Override
+    public void addTextSize() {
+        map.put("textSize", textSize);
     }
 
     @Override

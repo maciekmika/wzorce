@@ -12,12 +12,17 @@ public class AddChannelPageBuilder implements  BuilderBase {
     private String pageTitle;
     private User user;
     private List<Feed> feedList;
+    private String currentPage;
+    private Integer textSize;
 
-    public AddChannelPageBuilder(Map<String, Object> map, String title, User user, List<Feed> feedList){
+    public AddChannelPageBuilder(Map<String, Object> map, String title, User user,
+                                 List<Feed> feedList,String linkToCurrentPage, Integer textSize){
         this.map=map;
         this.pageTitle=title;
         this.user=user;
         this.feedList=feedList;
+        this.currentPage=linkToCurrentPage;
+        this.textSize=textSize;
     }
 
     @Override
@@ -58,6 +63,16 @@ public class AddChannelPageBuilder implements  BuilderBase {
     @Override
     public void addPagesAmount() {
 
+    }
+
+    @Override
+    public void addLinkToCurrentPage() {
+        map.put("currentPage", currentPage);
+    }
+
+    @Override
+    public void addTextSize() {
+        map.put("textSize", textSize);
     }
 
     @Override
