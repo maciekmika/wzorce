@@ -429,6 +429,8 @@ public class WebConfig {
 		 */
 		get("/register", (req, res) -> {
 			Map<String, Object> map = new HashMap<>();
+			map.put("currentPage", "/login/");
+			map.put("textSize", textSize);
 			return new ModelAndView(map, stateBase.getRegisterPage().getName());
         }, new FreeMarkerEngine());
 		/*

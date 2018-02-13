@@ -2,9 +2,10 @@
 
 <@layout.masterTemplate title="Timeline">
 
+    <#if feedMessages??>
 <ul class="list-unstyled">
 
-    <#if feedMessages??>
+
         <#list feedMessages as message>
             <li class="media">
                 <div class="media-body">
@@ -22,13 +23,13 @@
             </div>
         </#list>
     <#else>
-        <hr/>
         <div class="well">
             There're no messages so far.
         </div>
-    </#if>
+
 
 </ul>
+    </#if>
 
 <nav aria-label="Page navigation">
     <#if pages??>
