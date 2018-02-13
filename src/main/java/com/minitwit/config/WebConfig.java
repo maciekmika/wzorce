@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.minitwit.builder.*;
+import com.minitwit.director.MapDirector;
 import com.minitwit.model.*;
 import com.minitwit.state.*;
 import org.apache.commons.beanutils.BeanUtils;
@@ -29,10 +31,13 @@ public class WebConfig {
 	private static final String USER_SESSION_ID = "user";
 	private MiniTwitService service;
 	private StateBase stateBase;
+	private MapDirector mapDirector;
+	private BuilderBase builderBase;
 
 	public WebConfig(MiniTwitService service) {
 		this.service = service;
 		this.stateBase = new MainState();
+		this.mapDirector = new MapDirector();
 		staticFileLocation("/public");
 		setupRoutes();
 	}
@@ -47,23 +52,22 @@ public class WebConfig {
 		 *  as all the messages of followed users.
 		 */
 		get("/", (req, res) -> {
+
 			User user = getAuthenticatedUser(req);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Main Page");
-			map.put("user", user);
 			List<Feed> feedList = service.getFeedList(user);
-			map.put("feedList", feedList);
-			map.put("pageNumber", 1);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
-			int pagesAmount = (feedMessages.size()+1)/5;
-			if((feedMessages.size()) % 5 != 0 ) pagesAmount++;
-			List<Integer> pages = new ArrayList<>();
-			for(int i=1;i<=pagesAmount;i++) pages.add(i);
+
+			int pagesAmount = countPagesAmount(feedMessages.size());
+			List<Integer> pages = createPagesList(pagesAmount);
 			feedMessages = cropList(1, feedMessages);
-			map.put("feedMessages", feedMessages);
-			map.put("pages", pages);
-			map.put("pagesAmount", pagesAmount);
-			return new ModelAndView(map, stateBase.getMainPage().getName());
+
+
+			builderBase = new MainPageBuilder(new HashMap<>(),
+					"Main Page", user, feedList, feedMessages, 1,
+					pages, pagesAmount);
+			mapDirector.createMap(builderBase);
+
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
         }, new FreeMarkerEngine());
 		before("/", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -77,22 +81,21 @@ public class WebConfig {
 			User user = getAuthenticatedUser(req);
 			String pageNumber = req.params(":pageNumber");
 			Integer pageNr = Integer.parseInt(pageNumber);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Channel");
-			map.put("user", user);
 			List<Feed> feedList = service.getFeedList(user);
-			map.put("feedList", feedList);
-			map.put("pageNumber", pageNr);
 			List<FeedMessage> feedMessages = service.getFeedMessagesForMainPage(user);
-			int pagesAmount = (feedMessages.size()+1)/5;
-			if((feedMessages.size()) % 5 != 0 ) pagesAmount++;
-			List<Integer> pages = new ArrayList<>();
-			for(int i=1;i<=pagesAmount;i++) pages.add(i);
+
+
+			int pagesAmount = countPagesAmount(feedMessages.size());
+			List<Integer> pages = createPagesList(pagesAmount);
 			feedMessages = cropList(pageNr, feedMessages);
-			map.put("feedMessages", feedMessages);
-			map.put("pages", pages);
-			map.put("pagesAmount", pagesAmount);
-			return new ModelAndView(map, stateBase.getMainPage().getName());
+
+
+			builderBase = new MainPageBuilder(new HashMap<>(),
+					"Main Page", user, feedList, feedMessages, pageNr,
+					pages, pagesAmount);
+			mapDirector.createMap(builderBase);
+
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
 		}, new FreeMarkerEngine());
 		before("/main/:pageNumber", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -102,24 +105,20 @@ public class WebConfig {
 			}
 		});
 
-		/*
-		 * Displays the latest messages of all users.
-		 */
+
 		get("/public", (req, res) -> {
 			User user = getAuthenticatedUser(req);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Rss Reader");
-			map.put("user", user);
-			return new ModelAndView(map, stateBase.getMainPage().getName());
+			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getMainPage().getName());
 		}, new FreeMarkerEngine());
 
 
 		get("/start", (req, res) -> {
 			User user = getAuthenticatedUser(req);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Rss Reader");
-			map.put("user", user);
-			return new ModelAndView(map, "startPage.ftl");
+			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), "startPage.ftl");
 		}, new FreeMarkerEngine());
 
 
@@ -136,22 +135,20 @@ public class WebConfig {
 			else
 				stateBase = new MainState();
 
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "main");
-			map.put("user", user);
-			return new ModelAndView(map, stateBase.getLoginPage().getName());
+			builderBase = new PublicPageBuilder(new HashMap<>(), "Rss Reader", user);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getLoginPage().getName());
 		}, new FreeMarkerEngine());
 
 
 
 		get("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Add new channel");
-			map.put("user", user);
 			List<Feed> feedList = service.getFeedList(user);
-			map.put("feedList", feedList);
-			return new ModelAndView(map, stateBase.getAddChannelPage().getName());
+
+			builderBase = new AddChannelPageBuilder(new HashMap<>(), "Add new channel", user, feedList);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getAddChannelPage().getName());
 		}, new FreeMarkerEngine());
 		before("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -166,23 +163,18 @@ public class WebConfig {
 			String feedName = req.params(":feedName");
 			String pageNumber = req.params(":pageNumber");
 			Integer pageNr = Integer.parseInt(pageNumber);
-			Map<String, Object> map = new HashMap<>();
-			map.put("pageTitle", "Channel");
-			map.put("user", user);
 			List<Feed> feedList = service.getFeedList(user);
-			map.put("feedList", feedList);
-			map.put("pageNumber", pageNr);
 			List<FeedMessage> feedMessages = service.getFeedMessages(user, feedName);
-			int pagesAmount = (feedMessages.size()+1)/5;
-			if((feedMessages.size()) % 5 != 0 ) pagesAmount++;
-			List<Integer> pages = new ArrayList<>();
-			for(int i=1;i<=pagesAmount;i++) pages.add(i);
+
+			int pagesAmount = countPagesAmount(feedMessages.size());
+			List<Integer> pages = createPagesList(pagesAmount);
 			feedMessages = cropList(pageNr, feedMessages);
-			map.put("feedMessages", feedMessages);
-			map.put("pages", pages);
-			map.put("feedName", feedName);
-			map.put("pagesAmount", pagesAmount);
-			return new ModelAndView(map, stateBase.getChannelPage().getName());
+
+			builderBase = new ChannelPageBuilder(new HashMap<>(),
+					"Channel", user, feedList, feedMessages, feedName, pageNr,
+					pages, pagesAmount);
+			mapDirector.createMap(builderBase);
+			return new ModelAndView(builderBase.getFinalMap(), stateBase.getChannelPage().getName());
 		}, new FreeMarkerEngine());
 		before("/f/:feedName", (req, res) -> {
 			User user = getAuthenticatedUser(req);
@@ -191,7 +183,8 @@ public class WebConfig {
 				halt();
 			}
 		});
-
+		
+/*
 		get( "/f/:feedName", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			String feedName = req.params(":feedName");
@@ -211,7 +204,7 @@ public class WebConfig {
 				halt();
 			}
 		});
-
+*/
 
 		/*
 		* Add new feed
@@ -347,6 +340,18 @@ public class WebConfig {
 			res.redirect("/public");
 			return null;
         });
+	}
+
+	private List<Integer> createPagesList(int pagesAmount){
+		List<Integer> pages = new ArrayList<>();
+		for(int i=1;i<=pagesAmount;i++) pages.add(i);
+		return pages;
+	}
+
+	private Integer countPagesAmount(int listSize){
+		int pagesAmount = (listSize+1)/5;
+		//if(listSize % 5 != 0 ) pagesAmount++;
+		return pagesAmount;
 	}
 
 	private List<FeedMessage> cropList(int pageNr, List<FeedMessage> feedMessages){

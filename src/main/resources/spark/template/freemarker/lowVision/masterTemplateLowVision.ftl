@@ -25,13 +25,22 @@
                         <#if user??>
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
+                                    <a class="nav-link" href="#">Text size</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/addNewFeed">+</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/addNewFeed">-</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/addNewFeed">Add channel</a>
                                 </li>
-                            </ul>
-                            <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
                                     <a class="nav-link" href="/logout">Sign Out</a>
                                 </li>

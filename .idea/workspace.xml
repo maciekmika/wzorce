@@ -12,31 +12,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoginPageLowVision.ftl" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/LoginPageLowVision.ftl">
+      <file leaf-file-name="BuilderBase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/builder/BuilderBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="238">
+              <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="masterTemplateLowVision.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl">
+      <file leaf-file-name="WebConfig.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/config/WebConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="66" column="81" lean-forward="false" selection-start-line="66" selection-start-column="81" selection-end-line="66" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styleLowVision.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/public/css/styleLowVision.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            <state relative-caret-position="2380">
+              <caret line="185" column="8" lean-forward="false" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -84,12 +76,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/factory/page/MainPageColorBlind.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/startPage.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/factory/page/LoginPageColorBlind.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/factory/page/RegisterPageColorBlind.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/factory/page/ChannelPageColorBlind.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/factory/page/AddChannelPageColorBlind.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minitwit/state/ColorBlindState.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minitwit/factory/ColorBlindFactory.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/addChannelPageColorBlind.ftl" />
@@ -127,14 +113,20 @@
         <option value="$PROJECT_DIR$/src/main/resources/public/css/styleColorBlind.css" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/colorBlind/channelPageColorBlind.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/colorBlind/mainPageColorBlind.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/MainPageLowVision.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/keyboardUser/MainPageKeyboardUser.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/keyboardUser/ChannelKeyboardUser.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/ChannelPageLowVision.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/config/WebConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/public/css/styleLowVision.css" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/LoginPageLowVision.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/builder/BuilderBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/builder/AddChannelPageBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/builder/MainPageBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/builder/PublicPageBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/builder/ChannelPageBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/director/MapDirector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minitwit/config/WebConfig.java" />
       </list>
     </option>
   </component>
@@ -144,7 +136,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -167,7 +159,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,6 +191,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="minitwit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wzorce" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wzorce" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="minitwit" type="462c0819:PsiDirectoryNode" />
+              <item name="builder" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="wzorce" type="b2602c69:ProjectViewProjectNode" />
@@ -319,6 +319,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -332,23 +333,23 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../invoices-project" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\java_workspace\designPatterns\wzorce\src\main\resources\spark\template\freemarker\default" />
+      <recent name="C:\Users\Admin\java_workspace\designPatterns\wzorce\src\main\resources\spark\template\freemarker\ColorBlind" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.minitwit.builder" />
+      <recent name="com.minitwit.factory" />
+      <recent name="com.minitwit.state" />
+      <recent name="com.minitwit.factory.page.keyboardUser" />
+      <recent name="com.minitwit.factory.page.lowVision" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\java_workspace\designPatterns\wzorce\src\main\resources\public\css" />
       <recent name="C:\Users\Admin\java_workspace\designPatterns\wzorce\src\main\resources\spark\template\freemarker\keyboardUser" />
       <recent name="C:\Users\Admin\java_workspace\designPatterns\wzorce\src\main\resources\spark\template\freemarker\lowVision" />
       <recent name="C:\Users\Admin\java_workspace\designPatterns\wzorce\src\main\resources\spark\template\freemarker" />
       <recent name="C:\Users\Admin\java_workspace\wzorce\src\main\resources\spark\template\freemarker" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.minitwit.factory" />
-      <recent name="com.minitwit.state" />
-      <recent name="com.minitwit.factory.page.keyboardUser" />
-      <recent name="com.minitwit.factory.page.lowVision" />
-      <recent name="com.minitwit.factory.page" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\java_workspace\designPatterns\wzorce\src\main\resources\spark\template\freemarker\default" />
-      <recent name="C:\Users\Admin\java_workspace\designPatterns\wzorce\src\main\resources\spark\template\freemarker\ColorBlind" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -630,14 +631,15 @@
       <workItem from="1514641467521" duration="3025000" />
       <workItem from="1515239929873" duration="11193000" />
       <workItem from="1515322958083" duration="1028000" />
+      <workItem from="1518518772242" duration="11210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91817000" />
+    <option name="totallyTimeSpent" value="103157000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -648,54 +650,34 @@
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10682493" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789317" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910978" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.077151336" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789317" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -761,50 +743,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/default/timeline.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/factory/page/Page.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/factory/page/MainPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/default/masterTemplate.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="71" column="116" lean-forward="false" selection-start-line="71" selection-start-column="116" selection-end-line="71" selection-end-column="116" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/state/ColorBlindState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="33" column="49" lean-forward="false" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/ChannelPageLowVision.ftl" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/RegisterPageLowVision.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -828,7 +770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -836,7 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -844,7 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -887,7 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,7 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="29" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -911,7 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="60" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,7 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="57" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,7 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="58" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -935,7 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -943,7 +876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="49" lean-forward="false" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,7 +883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -967,7 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="56" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -983,7 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,7 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1040,7 +968,7 @@
         <state relative-caret-position="249">
           <caret line="25" column="28" lean-forward="false" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1065,7 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1073,7 +1000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="61" column="1" lean-forward="false" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,7 +1007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="22" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="30" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1089,7 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="517">
           <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1097,7 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1105,7 +1028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1113,7 +1035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1121,7 +1042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="517">
           <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1129,26 +1049,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
           <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/config/WebConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/LoginPageLowVision.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="141" column="65" lean-forward="false" selection-start-line="141" selection-start-column="65" selection-end-line="141" selection-end-column="65" />
-          <folding>
-            <element signature="e#7166#7174#0" expanded="true" />
-            <element signature="e#8276#8284#0" expanded="true" />
-            <element signature="e#9510#9518#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="81" lean-forward="false" selection-start-line="66" selection-start-column="81" selection-end-line="66" selection-end-column="81" />
+        <state relative-caret-position="249">
+          <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1161,10 +1068,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/LoginPageLowVision.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+        <state relative-caret-position="-480">
+          <caret line="27" column="54" lean-forward="false" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/builder/AddChannelPageBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="44" column="8" lean-forward="false" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
+          <folding>
+            <element signature="e#767#768#0" expanded="true" />
+            <element signature="e#812#813#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/builder/PublicPageBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="40" column="8" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/builder/BuilderBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/director/MapDirector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/builder/ChannelPageBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="58" column="36" lean-forward="false" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/builder/MainPageBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minitwit/config/WebConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="185" column="8" lean-forward="false" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
           <folding />
         </state>
       </provider>
