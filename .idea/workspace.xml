@@ -51,19 +51,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="masterTemplateLowVision.ftl" pinned="false" current-in-tab="false">
+      <file leaf-file-name="masterTemplateLowVision.ftl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="166">
+              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
               <folding>
-                <marker date="1518561124673" expanded="false" signature="4687:4694" ph="—" />
+                <marker date="1518561859086" expanded="false" signature="4688:4695" ph="—" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainPageLowVision.ftl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainPageLowVision.ftl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/MainPageLowVision.ftl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -170,10 +170,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/colorBlind/mainPageColorBlind.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/keyboardUser/MainPageKeyboardUser.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/default/masterTemplate.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/minitwit/config/WebConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/ChannelPageLowVision.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/MainPageLowVision.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl" />
       </list>
     </option>
   </component>
@@ -714,7 +714,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110751000" />
+    <option name="totallyTimeSpent" value="110898000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -1200,16 +1200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1518561124673" expanded="false" signature="4687:4694" ph="—" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/MainPageLowVision.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1217,6 +1207,16 @@
           <folding>
             <element signature="e#471#539#0#HTML" expanded="true" />
             <element signature="e#717#785#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spark/template/freemarker/lowVision/masterTemplateLowVision.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <marker date="1518561859086" expanded="false" signature="4688:4695" ph="—" />
           </folding>
         </state>
       </provider>
