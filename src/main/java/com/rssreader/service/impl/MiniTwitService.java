@@ -1,5 +1,6 @@
 package com.rssreader.service.impl;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.rssreader.dao.FeedDao;
@@ -33,7 +34,7 @@ public class MiniTwitService {
 		return feedDao.getFeedList(user);
 	}
 
-	public void addNewFeed(User user, String name, String link) {
+	public void addNewFeed(User user, String name, String link) throws IOException {
 		feedDao.insertNewFeed(user, name, link);
 	}
 	

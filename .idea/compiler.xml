@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="minitwit" />
+        <module name="rssreader" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="minitwit" target="1.8" />
+      <module name="rssreader" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

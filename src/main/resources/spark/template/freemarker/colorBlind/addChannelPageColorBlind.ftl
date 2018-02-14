@@ -1,7 +1,11 @@
 <#import "masterTemplateColorBlind.ftl" as layout />
 
 <@layout.masterTemplate title="Add new channel">
-
+    <#if error??>
+    <div class="alert alert-danger">
+        <strong>Error:</strong> Provided RSS address is invalid.
+    </div>
+    </#if>
 
 
 
@@ -15,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="ChannelUrl">Url of new channel</label>
-                    <input type="text" class="form-control" name="link"  placeholder="Enter url" required/>
+                    <input type="text" class="form-control" name="link"  placeholder="Enter url" pattern=".*\.xml" title="should end with .xml" required/>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

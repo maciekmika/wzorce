@@ -241,11 +241,17 @@ public class WebConfig {
 			User user = getAuthenticatedUser(req);
 			List<Feed> feedList = service.getFeedList(user);
 
-			builderBase = new AddChannelPageBuilder(new HashMap<>(), "Add new channel",
+			Map<String, Object> map = new HashMap<>();
+			map.put("error", req.queryParams("error"));
+
+
+			builderBase = new AddChannelPageBuilder(map, "Add new channel",
 					user, feedList, "/addNewFeed/", textSize);
+
 			mapDirector.createMap(builderBase);
 			return new ModelAndView(builderBase.getFinalMap(), stateBase.getAddChannelPage().getName());
 		}, new FreeMarkerEngine());
+
 		before("/addNewFeed", (req, res) -> {
 			User user = getAuthenticatedUser(req);
 			if(user == null) {
@@ -365,7 +371,13 @@ public class WebConfig {
 			String link = params.getString("link");
 
 
-			service.addNewFeed(user, name, link);
+			try {
+				service.addNewFeed(user, name, link);
+			} catch (Exception e) {
+				res.redirect("/addNewFeed?error=404");
+				return null;
+			}
+
 			res.redirect("/");
 			return null;
 		});

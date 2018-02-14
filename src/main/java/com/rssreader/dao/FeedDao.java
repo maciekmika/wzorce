@@ -4,6 +4,7 @@ import com.rssreader.model.Feed;
 import com.rssreader.model.FeedMessage;
 import com.rssreader.model.User;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface FeedDao {
@@ -13,5 +14,5 @@ public interface FeedDao {
 
 	List<Feed> getFeedList(User user);
 	
-	void insertNewFeed(User user, String name,String link);
+	void insertNewFeed(User user, String name,String link) throws IOException;
 }

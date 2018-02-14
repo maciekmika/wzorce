@@ -8,6 +8,10 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 
 @Repository
@@ -77,16 +81,27 @@ public class FeedDaoImpl implements FeedDao {
     }
 
     @Override
-    public void insertNewFeed(User user, String name, String link) {
+    public void insertNewFeed(User user, String name, String link) throws IOException {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("userId", user.getId());
         params.put("name", name);
         params.put("link", link);
 
+        if (getResponseCode(link) != 200) {
+            throw new IllegalArgumentException();
+        }
+
         String sql = "insert into feed (user_id, feedName, link) values (:userId, :name, :link)";
         template.update(sql, params);
     }
 
+    public static int getResponseCode(String urlString) throws MalformedURLException, IOException {
+        URL u = new URL(urlString);
+        HttpURLConnection huc =  (HttpURLConnection)  u.openConnection();
+        huc.setRequestMethod("GET");
+        huc.connect();
+        return huc.getResponseCode();
+    }
 
     private RowMapper<Feed> feedMapper = (rs, rowNum) -> {
         Feed m = new Feed(
