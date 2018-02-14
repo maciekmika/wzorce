@@ -121,7 +121,7 @@
 			    	</execution>
 			  	</executions>
 			  	<configuration>
-				    <mainClass>com.minitwit.App</mainClass>
+				    <mainClass>com.rssreader.App</mainClass>
 				    <arguments>
 				    </arguments>
 				</configuration>
