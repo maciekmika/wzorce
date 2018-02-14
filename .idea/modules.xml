@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/rssreader.iml" filepath="$PROJECT_DIR$/.idea/rssreader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minitwit.iml" filepath="$PROJECT_DIR$/minitwit.iml" />
     </modules>
   </component>
 </project>
