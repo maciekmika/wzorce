@@ -102,7 +102,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-lg-3">
             <div class="list-group">
             <#if user??>
                 <a href="#" class="list-group-item list-group-item-action active">Channels</a>
@@ -116,7 +116,7 @@
             </#if>
             </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-lg-9">
             <div class="container">
 
                 <#nested />

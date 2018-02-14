@@ -61,7 +61,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-lg-2">
             <#if user??>
             <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,14 +77,14 @@
             </div>
             </#if>
         </div>
-        <div class="col-sm-8">
+        <div class="col-lg-8">
             <div class="container">
 
                 <#nested />
 
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-lg-2">
 
         </div>
 
