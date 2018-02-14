@@ -31,3 +31,7 @@ local.properties
 
 #Target directory
 target/*
+
+#IntelliJ
+.idea
+.idea/*
