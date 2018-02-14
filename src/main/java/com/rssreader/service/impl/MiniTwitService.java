@@ -59,9 +59,5 @@ public class MiniTwitService {
 		user.setPassword(PasswordUtil.hashPassword(user.getPassword()));
 		userDao.registerUser(user);
 	}
-
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
-
+	
 }
