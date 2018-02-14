@@ -4,7 +4,7 @@
 
     <#if user??>
     <form action="/newFeed" method="post" id="addFeedForm">
-        <h3 id="TitleAddChannel">${pageTitle}</h3>
+        <h6 id="TitleAddChannel">${pageTitle}</h6>
         <div class="form-group">
             <label for="ChannelName">Name for new channel</label>
             <input type="text" class="form-control" name="name"  placeholder="Enter name" required/>

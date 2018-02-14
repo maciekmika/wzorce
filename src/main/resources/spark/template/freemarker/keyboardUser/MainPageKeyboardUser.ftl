@@ -19,12 +19,12 @@
             </li>
         <#else>
             <div class="well">
-                There're no messages so far.
+                There're no feeds so far.
             </div>
         </#list>
     <#else>
         <div class="well">
-            There're no messages so far.
+            There're no feeds so far.
         </div>
 
 
@@ -50,12 +50,14 @@
             </#list>
 
             <#list pages as page>
-                <#if page == pageNumber>
-                    <li class="page-item active">
-                        <a class="page-link" href="/main/${page}">${page}<span class="sr-only">(current)</span></a>
-                    </li>
-                <#else>
-                    <li class="page-item"><a class="page-link" href="/main/${page}">${page}</a></li>
+                <#if (page < (pageNumber+5)) && (page > (pageNumber-5))>
+                    <#if page == pageNumber>
+                        <li class="page-item active">
+                            <a class="page-link" href="/main/${page}">${page}<span class="sr-only">(current)</span></a>
+                        </li>
+                    <#else>
+                        <li class="page-item"><a class="page-link" href="/main/${page}">${page}</a></li>
+                    </#if>
                 </#if>
             </#list>
 

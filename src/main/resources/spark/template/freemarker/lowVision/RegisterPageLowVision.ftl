@@ -8,7 +8,7 @@
         </div>
     </#if>
 
-    <h3>Sign Up</h3>
+    <h6>Sign Up</h6>
 
     <form class="form-horizontal" action="/register" role="form" method="post">
 
@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">E-Mail: </label>
+            <label for="email" class="col-sm-2 control-label">Email: </label>
             <div class="col-sm-10">
                 <input type="email" class="form-control" name="email" placeholder="E-Mail" value="${email!}" />
             </div>
@@ -42,7 +42,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Sign Up</button>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
             </div>
         </div>
   </form>

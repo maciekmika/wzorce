@@ -66,9 +66,37 @@ body {
     text-decoration: underline;
 }
 
+.page-item a{
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
 .page-item a:hover{
     background-color: white;
     text-decoration: underline;
+    color: black;
+    border-color: black;
+}
+
+page-item active a{
+    background-color: black;
+}
+
+page-item active a:hover{
+    background-color: black;
+    text-decoration: underline;
+}
+
+page-item disabled a{
+    color: black;
+    border-color: black;
+    text-decoration: none;
+}
+
+page-item disabled a:hover{
+    border-color: black;
+    text-decoration: none;
 }
 
 .pagination{

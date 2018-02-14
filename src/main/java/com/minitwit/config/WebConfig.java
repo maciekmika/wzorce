@@ -33,7 +33,7 @@ public class WebConfig {
 	private StateBase stateBase;
 	private MapDirector mapDirector;
 	private BuilderBase builderBase;
-	private Integer textSize = 300;
+	private Integer textSize = 200;
 
 	public WebConfig(MiniTwitService service) {
 		this.service = service;

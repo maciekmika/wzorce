@@ -7,11 +7,45 @@ body {
     padding-top: 19px;
     padding-right: 15px;
     padding-left: 15px;
-
+    margin-top: 50px;
     color: #777;
     border-top: 1px solid #e5e5e5;
 }
 
 #menu-top {
     padding-bottom: 20px;
+}
+
+.square{
+    background: #007bff;
+    width: 20vw;
+    height: 20vw;
+    margin: 5vw;
+    font-size: 200%;
+}
+
+.square a{
+    color: white;
+}
+
+.col-lg-4{
+    font-size: 300%;
+    color: white;
+    padding: 3%;
+}
+
+.col-lg-4 a{
+    color: white;
+}
+
+#col1{
+    background-color: #007bff;
+}
+
+#col2{
+    background-color: orange;
+}
+
+#col3{
+    background-color: #b9151b;
 }
