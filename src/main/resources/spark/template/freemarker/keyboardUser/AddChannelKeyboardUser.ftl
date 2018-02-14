@@ -1,7 +1,11 @@
 <#import "masterTemplateKeyboardUse.ftl" as layout />
 
 <@layout.masterTemplate title="Add new channel">
-
+    <#if error??>
+    <div class="alert alert-danger">
+        <strong>Error:</strong> Provided RSS address is invalid.
+    </div>
+    </#if>
 
 
 
