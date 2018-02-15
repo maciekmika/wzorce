@@ -3,6 +3,7 @@ package com.rssreader.builder;
 import java.util.Map;
 
 public interface BuilderBase {
+
     public void addPageTitle();
     public void addUser();
     public void addFeedList();

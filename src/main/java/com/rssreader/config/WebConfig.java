@@ -19,7 +19,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.eclipse.jetty.util.MultiMap;
 import org.eclipse.jetty.util.UrlEncoded;
 
-import com.rssreader.service.impl.MiniTwitService;
+import com.rssreader.service.impl.RssReaderService;
 
 import spark.ModelAndView;
 import spark.Request;
@@ -29,13 +29,13 @@ import spark.utils.StringUtils;
 public class WebConfig {
 	
 	private static final String USER_SESSION_ID = "user";
-	private MiniTwitService service;
+	private RssReaderService service;
 	private StateBase stateBase;
 	private MapDirector mapDirector;
 	private BuilderBase builderBase;
 	private Integer textSize = 200;
 
-	public WebConfig(MiniTwitService service) {
+	public WebConfig(RssReaderService service) {
 		this.service = service;
 		this.stateBase = new MainState();
 		this.mapDirector = new MapDirector();

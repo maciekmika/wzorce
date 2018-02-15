@@ -14,7 +14,7 @@ import com.rssreader.util.PasswordUtil;
 import com.rssreader.model.Feed;
 
 @Service
-public class MiniTwitService {
+public class RssReaderService {
 	
 	@Autowired
 	private UserDao userDao;
